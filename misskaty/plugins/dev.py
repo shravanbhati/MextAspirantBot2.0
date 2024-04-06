@@ -146,6 +146,11 @@ async def balas(_, ctx: Message) -> "str":
     await ctx.delete_msg()
     await ctx.reply_msg(pesan, reply_to_message_id=ctx.reply_to_message.id)
 
+@app.on_bot_business_message()
+async def business_handl(self, ctx):
+    self.log.info(ctx)
+    await self.send_message(ctx.chat.id, "haloo", business_connection_id=ctx.connection_id)
+
 
 @app.on_message(filters.command(["stats"], COMMAND_HANDLER))
 @new_task
@@ -542,8 +547,6 @@ async def update_restart(_, ctx: Message, strings):
 
 @app.on_raw_update(group=-99)
 async def updtebot(client, update, users, _):
-    app.log.info(update)
-    app.log.info(users)
     if isinstance(update, UpdateBotStopped):
         niuser = users[update.user_id]
         if update.stopped and await db.is_user_exist(niuser.id):
