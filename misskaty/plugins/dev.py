@@ -148,8 +148,7 @@ async def balas(_, ctx: Message) -> "str":
 
 @app.on_bot_business_message(group=-97)
 async def business_handl(self, ctx):
-    self.log.info(ctx)
-    await self.send_message(ctx.chat.id, "haloo", business_connection_id=ctx.connection_id)
+    await self.send_message(ctx.chat.id, f"debug\n\n{ctx}", business_connection_id=ctx.business_connection_id)
 
 
 @app.on_message(filters.command(["stats"], COMMAND_HANDLER))
