@@ -146,7 +146,7 @@ async def balas(_, ctx: Message) -> "str":
     await ctx.delete_msg()
     await ctx.reply_msg(pesan, reply_to_message_id=ctx.reply_to_message.id)
 
-# @app.on_bot_business_message(group=-97)
+@app.on_bot_business_message(group=-97)
 async def business_handl(self, ctx):
     self.log.info(ctx)
     await self.send_message(ctx.chat.id, "haloo", business_connection_id=ctx.connection_id)
