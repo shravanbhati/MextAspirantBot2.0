@@ -540,7 +540,7 @@ async def update_restart(_, ctx: Message, strings):
     os.execvp(sys.executable, [sys.executable, "-m", "misskaty"])
 
 
-@user.on_raw_update(group=-99)
+@app.on_raw_update(group=-99)
 async def updtebot(client, update, users, _):
     app.log.info(update)
     app.log.info(users)
