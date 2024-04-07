@@ -25,6 +25,7 @@ __HELP__ = """
 
 
 @app.on_message(filters.command("ai", COMMAND_HANDLER) & pyro_cooldown.wait(10))
+@app.on_bot_business_message(filters.command("ai", COMMAND_HANDLER) & pyro_cooldown.wait(10))
 @use_chat_lang()
 async def gemini_chatbot(_, ctx: Message, strings):
     if len(ctx.command) == 1:
@@ -63,6 +64,7 @@ async def gemini_chatbot(_, ctx: Message, strings):
 
 
 @app.on_message(filters.command("ask", COMMAND_HANDLER) & pyro_cooldown.wait(10))
+@app.on_bot_business_message(filters.command("ask", COMMAND_HANDLER) & pyro_cooldown.wait(10))
 @use_chat_lang()
 async def openai_chatbot(_, ctx: Message, strings):
     if len(ctx.command) == 1:
