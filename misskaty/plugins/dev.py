@@ -146,11 +146,6 @@ async def balas(_, ctx: Message) -> "str":
     await ctx.delete_msg()
     await ctx.reply_msg(pesan, reply_to_message_id=ctx.reply_to_message.id)
 
-@app.on_bot_business_message(group=-97)
-async def business_handl(self, ctx):
-    msg = await self.send_message(ctx.chat.id, "pesan awal", business_connection_id=ctx.business_connection_id)
-    await msg.edit("Pesan diedit")
-
 
 @app.on_message(filters.command(["stats"], COMMAND_HANDLER))
 @new_task
